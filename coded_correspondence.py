@@ -2,8 +2,8 @@
 offset = 10
 
 message = "xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"
-original_message = "nke znkxk! znoy oy gt kdgsvrk ul g igkygx iovnkx. ckxk eua ghrk zu jkiujk oz? o nuvk yu! yktj sk g skyygmk hgiq cozn znk ygsk ullykz!"
-original_message = "We are in lockdown!"
+original_message = "hey there! this is an example of a caesar cipher. were you able to decode it? i hope so! send me a message back with the same offset!"
+#original_message = "We are in lockdown!"
 
 def decoder(message, offset):
     #declare variables
@@ -15,14 +15,20 @@ def decoder(message, offset):
     decoded_message=""
     start_index = 0
 
+    def decode_xar(xar):
+        if alphabet.index(xar) + offset < len(alphabet):
+            return alphabet.index(xar) + offset
+        else:
+            return alphabet.index(xar) - (len(alphabet) - offset)
+
     for word in message_as_list:
         new_word = ""
         for xar in word:
             if xar not in alphabet:
                 new_word+=xar
             else:
-                new_word += alphabet[alphabet.index(xar)-offset]
-        #print (new_word)
+                new_word += alphabet[decode_xar(xar)]
+
         if start_index == 0 :
             decoded_message += message[:message.find(word)+len(word)].replace(word,new_word)
             start_index = message.find(word)+len(word)
@@ -42,13 +48,20 @@ def coder(message, offset):
     coded_message=""
     start_index = 0
 
+    def code_xar(xar):
+        if alphabet.index(xar) - offset < 0:
+            return alphabet.index(xar) + (len(alphabet) - offset)
+        else:
+            return alphabet.index(xar) - offset
+
     for word in message_as_list:
         new_word = ""
         for xar in word:
             if xar not in alphabet:
                 new_word+=xar
             else:
-                new_word += alphabet[alphabet.index(xar)-(len(alphabet)-offset)]
+                #new_word += alphabet[alphabet.index(xar)-(len(alphabet)-offset)]
+                new_word += alphabet[code_xar(xar)]
         #print (new_word)
         if start_index == 0 :
             coded_message += message[:message.find(word)+len(word)].replace(word,new_word)
@@ -59,8 +72,8 @@ def coder(message, offset):
 
     return coded_message
 
-print(decoder("vhfinmxkl atox kxgwxkxw tee hy maxlx hew vbiaxkl tl hulhexmx. px'ee atox mh kxteer lmxi ni hnk ztfx by px ptgm mh dxxi hnk fxlltzxl ltyx.",9))
-#print(coder(original_message,10))
+print(decoder(message,10))
+print(coder(original_message,10))
 
 
 
