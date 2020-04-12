@@ -4,6 +4,7 @@ offset = 10
 message = "xuo jxuhu! jxyi yi qd unqcfbu ev q squiqh syfxuh. muhu oek qrbu je tusetu yj? y xefu ie! iudt cu q cuiiqwu rqsa myjx jxu iqcu evviuj!"
 original_message = "hey there! this is an example of a caesar cipher. were you able to decode it? i hope so! send me a message back with the same offset!"
 #original_message = "We are in lockdown!"
+#message="Wu qhu yd besatemd!"
 
 def decoder(message, offset):
     #declare variables
