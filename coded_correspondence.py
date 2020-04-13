@@ -142,7 +142,9 @@ def vigenere_decoder(message,keyword):
 #print(coder(original_message,offset))
 message = "dfc aruw fsti gr vjtwhr wznj? vmph otis! cbx swv jipreneo uhllj kpi rahjib eg fjdkwkedhmp!"
 keyword = "friends"
+
 print(vigenere_decoder(message,keyword))
+print(vigenere_coder(vigenere_decoder(message,keyword),keyword))
 
 
 
